@@ -68,6 +68,7 @@
     <Compile Include="IImageFile.cs" />
     <Compile Include="IImageInImage.cs" />
     <Compile Include="ImageFile.cs" />
+    <Compile Include="ImageInImage.cs" />
     <Compile Include="ITextFile.cs" />
     <Compile Include="ITextInDoc.cs" />
     <Compile Include="ITextInImage.cs" />

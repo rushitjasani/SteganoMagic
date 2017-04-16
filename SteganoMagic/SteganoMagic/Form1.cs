@@ -19,7 +19,7 @@ namespace SteganoMagic
         long fileSize, secretmsgsize;
         int fileNameSize;
         FileInfo finfo;
-        string msg = "";
+        string msg="";
         string i2ic, i2is, i2ie;
         string ext;
         int i2isize;
@@ -316,7 +316,71 @@ namespace SteganoMagic
 
         private void button7_Click(object sender, EventArgs e)
         {
+            //Checking for validation.
+            if (textBox4.Text == "" || textBox5.Text == "")
+            {
+                MessageBox.Show("File Path cannot be blank...!");
+            }
+            else if (i2isize > secretmsgsize)
+            {
+                MessageBox.Show("You can Embedd Maximum " + secretmsgsize + " Pixels.");
+                textBox5.Text = "";
+            }
+            else
+            {
+                Cursor.Current = Cursors.WaitCursor;
 
+                SimpleObjectFactory sof = new SimpleObjectFactory();
+                IImageInImage ImageInImage = sof.getImageInImage();
+                Bitmap eMap = ImageInImage.Embedd(i2ic,i2is);
+
+                string path = i2is.Remove(i2is.Length - justFName(i2is).Length) + justFName(i2is).Remove(justFName(i2is).Length - 4) + "1.jpg";
+
+                if (!File.Exists(path))
+                {
+                    eMap.Save(path);
+                    label20.Text = "Output File : " + path;
+                }
+                else if (File.Exists(path))
+                {
+                    MessageBox.Show(justFName(loadedFilePath).Remove(fileNameSize - 4) + "1.jpg File already exist...!");
+                    label20.Text = "";
+                }
+
+                eMap.Dispose();
+                Cursor.Current = Cursors.Arrow;
+                loadedFilePath = "";
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (loadedFilePath == "")
+            {
+                MessageBox.Show("File Path cannot be blank...!");
+            }
+            else
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                SimpleObjectFactory sof = new SimpleObjectFactory();
+                IImageInImage ImageInImage = sof.getImageInImage();
+                Bitmap s = ImageInImage.Extract(i2ie);
+
+                string path = loadedFilePath.Remove(loadedFilePath.Length - fileNameSize) + justFName(loadedFilePath).Remove(fileNameSize - 4) + "1.jpg";
+                if (!File.Exists(path))
+                {
+                    s.Save(path);
+                    label6.Text = path;
+                }
+                else if (File.Exists(path))
+                {
+                    MessageBox.Show(justFName(loadedFilePath).Remove(fileNameSize - 4) + "1.jpg File already exist...!");
+                    label6.Text = "";
+                }
+                s.Dispose();
+                Cursor.Current = Cursors.Arrow;
+                loadedFilePath = "";
+            }
         }
     }
 }

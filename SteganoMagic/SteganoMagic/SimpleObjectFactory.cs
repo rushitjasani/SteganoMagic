@@ -27,5 +27,10 @@ namespace SteganoMagic
         {
             return new ImageFile();
         }
+
+        public IImageInImage getImageInImage()
+        {
+            return new ImageInImage();
+        }
     }
 }
