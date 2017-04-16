@@ -401,6 +401,7 @@
             this.button9.TabIndex = 3;
             this.button9.Text = "Embedd";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 
@@ -522,6 +523,7 @@
             this.button7.TabIndex = 18;
             this.button7.Text = "Embedd";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -719,6 +721,7 @@
             this.button11.TabIndex = 3;
             this.button11.Text = "Extract";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 

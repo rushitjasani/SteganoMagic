@@ -51,6 +51,9 @@ namespace SteganoMagic
             }
             return text;
         }
+
+
+
         public string Extract(string text)
         {
             string binMsg = "";

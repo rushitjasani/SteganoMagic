@@ -17,5 +17,15 @@ namespace SteganoMagic
         {
             return new TextInDoc();
         }
+
+        public ITextInImage getTextInImage()
+        {
+            return new TextInImage();
+        }
+
+        public IImageFile getImageFile()
+        {
+            return new ImageFile();
+        }
     }
 }

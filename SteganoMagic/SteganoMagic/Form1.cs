@@ -19,7 +19,6 @@ namespace SteganoMagic
         long fileSize, secretmsgsize;
         int fileNameSize;
         FileInfo finfo;
-        string binMsg = "";
         string msg = "";
         string i2ic, i2is, i2ie;
         string ext;
@@ -103,6 +102,7 @@ namespace SteganoMagic
         private void button3_Click(object sender, EventArgs e)
         {
             browsefile(".txt", textBox3);
+
             textBox11.Text = "";
         }
 
@@ -238,6 +238,85 @@ namespace SteganoMagic
                 loadedFilePath = "";
                 Cursor.Current = Cursors.Arrow;
             }
+        }
+
+        ////////////////////////////////////////////TEXT IN IMAGE : EMBEDD : LOGIC ///////////////////////////////////////////////
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            
+            if (loadedFilePath == "")
+            {
+                MessageBox.Show("File Path cannot be blank...!");
+                textBox6.Text = "";
+                textBox7.Text = "";
+            }
+            else if (textBox7.Text == "")
+            {
+                MessageBox.Show("Your Msg Should not be blank.");
+            }
+            else if (textBox7.Text.Length > secretmsgsize)
+            {
+                MessageBox.Show("You can Embedd Maximum " + secretmsgsize + " characters.");
+                textBox7.Text = "";
+            }
+            else
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                SimpleObjectFactory sof = new SimpleObjectFactory();
+                //Text Processing
+                string msg = textBox7.Text;
+
+                ITextInImage textInImage = sof.getTextInImage();
+                Bitmap eMap = textInImage.Embedd(loadedFilePath, msg);
+
+                string path = loadedFilePath.Remove(loadedFilePath.Length - fileNameSize) + justFName(loadedFilePath).Remove(fileNameSize - 4) + "1.jpg";
+                if (!File.Exists(path))
+                {
+                    eMap.Save(path);
+                    label31.Text = "Output File : " + path;
+                }
+                else if (File.Exists(path))
+                {
+                    MessageBox.Show(justFName(loadedFilePath).Remove(fileNameSize - 4) + "1.jpg File already exist...!");
+                    label31.Text = "";
+                }
+
+                loadedFilePath = "";
+                Cursor.Current = Cursors.Arrow;
+
+            }
+        }
+
+
+        ////////////////////////////////////////////TEXT IN IMAGE : EXTRACT : LOGIC ///////////////////////////////////////////////
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (loadedFilePath == "")
+            {
+                MessageBox.Show("File Path cannot be blank...!");
+            }
+            else
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                SimpleObjectFactory sof = new SimpleObjectFactory();
+                ITextInImage textInImage = sof.getTextInImage();
+                msg = textInImage.Extract(loadedFilePath);
+                textBox10.Text = msg;
+                loadedFilePath = "";
+                Cursor.Current = Cursors.Arrow;
+            
+            }
+        }
+
+        ////////////////////////////////////////////IMAGE IN IMAGE : EXTRACT : LOGIC ///////////////////////////////////////////////
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
