@@ -144,10 +144,10 @@
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl2.Location = new System.Drawing.Point(2, -1);
+            this.tabControl2.Location = new System.Drawing.Point(3, 0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(894, 461);
+            this.tabControl2.Size = new System.Drawing.Size(896, 470);
             this.tabControl2.TabIndex = 0;
             // 
             // tabPage3
@@ -164,7 +164,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 30);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(886, 427);
+            this.tabPage3.Size = new System.Drawing.Size(888, 436);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Text in Document";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -304,7 +304,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 30);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(886, 427);
+            this.tabPage4.Size = new System.Drawing.Size(888, 436);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Text in Image";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -443,7 +443,7 @@
             this.tabPage5.Controls.Add(this.textBox4);
             this.tabPage5.Location = new System.Drawing.Point(4, 30);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(886, 427);
+            this.tabPage5.Size = new System.Drawing.Size(888, 436);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "Image in Image";
             this.tabPage5.UseVisualStyleBackColor = true;

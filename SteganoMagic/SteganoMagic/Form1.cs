@@ -109,51 +109,79 @@ namespace SteganoMagic
         ////////////////////////////////////////////IMAGE IN IMAGE : EMBEDD : BROWSE CARRIER FILE///////////////////////////////////////////////
         private void button5_Click(object sender, EventArgs e)
         {
-            browsefile(".jpg", textBox4);
-            i2ic = loadedFilePath;
-            Image img = Image.FromFile(loadedFilePath);
-            Bitmap bmp = new Bitmap(img);
-            var fileLength = new FileInfo(loadedFilePath).Length;
-            secretmsgsize = ((bmp.Height * bmp.Width - 10) / 11);
-            label27.Text = (fileLength / 1024).ToString() + " KB";
-            label26.Text = secretmsgsize.ToString() + " Pixels";
+            if (browsefile(".jpg", textBox4))
+            {
+                i2ic = loadedFilePath;
+                Image img = Image.FromFile(loadedFilePath);
+                Bitmap bmp = new Bitmap(img);
+                var fileLength = new FileInfo(loadedFilePath).Length;
+                secretmsgsize = ((bmp.Height * bmp.Width - 10) / 11);
+                label27.Text = (fileLength / 1024).ToString() + " KB";
+                label26.Text = secretmsgsize.ToString() + " Pixels";
+            }
+            else {
+                label27.Text = "0 KB";
+                label26.Text = "0 Pixels";
+            }
+
+            
         }
 
         ////////////////////////////////////////////IMAGE IN IMAGE : EMBEDD : BROWSE SECRET FILE///////////////////////////////////////////////
         private void button6_Click(object sender, EventArgs e)
         {
-            browsefile(".jpg", textBox5);
-            i2is = loadedFilePath;
-
-            Image imgs = Image.FromFile(i2is);
-            Bitmap bmps = new Bitmap(imgs);
-            i2isize = bmps.Width * bmps.Height;
+            if (browsefile(".jpg", textBox5))
+            {
+                i2is = loadedFilePath;
+                Image imgs = Image.FromFile(i2is);
+                Bitmap bmps = new Bitmap(imgs);
+                i2isize = bmps.Width * bmps.Height;
+            }
+            else 
+            {
+                i2isize = 0;
+            }
+            
         }
 
         ////////////////////////////////////////////IMAGE IN IMAGE : EXTRACT : BROWSE ///////////////////////////////////////////////
         private void button12_Click(object sender, EventArgs e)
         {
-            browsefile(".jpg", textBox9);
-            i2ie = loadedFilePath;
+            if (browsefile(".jpg", textBox9))
+            {
+                i2ie = loadedFilePath;
+            }            
         }
 
         ///////////////////////////////////////////////Text in Image : EMBEDD : BROWSE ///////////////////////////////////////////////
         private void button8_Click(object sender, EventArgs e)
         {
-            browsefile(".jpg", textBox6);
-            Image img = Image.FromFile(loadedFilePath);
-            Bitmap bmp = new Bitmap(img);
-            var fileLength = new FileInfo(loadedFilePath).Length;
-            secretmsgsize = (((bmp.Height * bmp.Width * 3) - 8) / 8);
-            label22.Text = (fileLength / 1024).ToString() + " KB";
-            label21.Text = secretmsgsize.ToString() + " Characters";
+            if (browsefile(".jpg", textBox6))
+            {
+                Image img = Image.FromFile(loadedFilePath);
+                Bitmap bmp = new Bitmap(img);
+                var fileLength = new FileInfo(loadedFilePath).Length;
+                secretmsgsize = (((bmp.Height * bmp.Width * 3) - 8) / 8);
+                label22.Text = (fileLength / 1024).ToString() + " KB";
+                label21.Text = secretmsgsize.ToString() + " Characters";
+            }
+            else
+            {
+                textBox6.Text = "";
+                label22.Text = "0 KB";
+                label21.Text = "0 Characters";
+            }
+            
         }
 
         ////////////////////////////////////////////TEXT IN IMAGE : EXTRACT : BROWSE ///////////////////////////////////////////////
         private void button10_Click(object sender, EventArgs e)
         {
-            browsefile(".jpg", textBox8);
-            textBox10.Text = "";
+            if (browsefile(".jpg", textBox8))
+            {
+                textBox10.Text = "";
+            }
+            
         }
 
         ///////////////////////////////////////////////TEXT IN DOC : EMBEDD : LOGIC ///////////////////////////////////////////////

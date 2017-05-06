@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SteganoMagic
 {
@@ -109,15 +110,25 @@ namespace SteganoMagic
                     if (binMsg.Length > 8)
                         if (binMsg.Substring(binMsg.Length - 8, 8).Equals("11111111") && binMsg.Length % 8 == 0)
                         { flag = 1; break; }
+
                 }
             }
 
-            binMsg = binMsg.Remove(binMsg.Length - 8);
-            for (int i = 0; i < binMsg.Length; i += 8)
+
+            if (binMsg.Substring(binMsg.Length - 8, 8).Equals("11111111") && binMsg.Length % 8 == 0)
             {
-                msg += (char)(128 * int.Parse(binMsg[i].ToString()) + 64 * int.Parse(binMsg[i + 1].ToString()) + 32 * int.Parse(binMsg[i + 2].ToString()) + 16 * int.Parse(binMsg[i + 3].ToString()) + 8 * int.Parse(binMsg[i + 4].ToString()) + 4 * int.Parse(binMsg[i + 5].ToString()) + 2 * int.Parse(binMsg[i + 6].ToString()) + int.Parse(binMsg[i + 7].ToString()));
+                binMsg = binMsg.Remove(binMsg.Length - 8);
+
+                for (int i = 0; i < binMsg.Length; i += 8)
+                {
+                    msg += (char)(128 * int.Parse(binMsg[i].ToString()) + 64 * int.Parse(binMsg[i + 1].ToString()) + 32 * int.Parse(binMsg[i + 2].ToString()) + 16 * int.Parse(binMsg[i + 3].ToString()) + 8 * int.Parse(binMsg[i + 4].ToString()) + 4 * int.Parse(binMsg[i + 5].ToString()) + 2 * int.Parse(binMsg[i + 6].ToString()) + int.Parse(binMsg[i + 7].ToString()));
+                }
             }
-                
+            else
+            {
+                msg = "";
+                MessageBox.Show("No Message Found.");
+            }
 
             return msg;
         }
